@@ -32,7 +32,6 @@ class ItemAPIView(APIView):
             else:
                 return Response({'message': 'Пароль не верен'}, status=status.HTTP_401_UNAUTHORIZED)
 
-            #return Response({'login': player.login, 'password': player.password}, status=status.HTTP_200_OK)
         except Http404:
             return Response({'error': 'Параметр login не указан'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -48,7 +47,7 @@ class UpdateAchievesView(APIView):
         try:
             param_value = request.query_params.get('key')
             if param_value != "f@?2R{yPCZuI2!u(iE!4$Z&(}.sd;G9e4*<kd{D8ltAfs9HNqIR*0w=^#yG^):{?":
-                raise PermissionDenied("You don't have permission to perform this action.")
+                raise PermissionDenied("У вас нет разрешения для выполнения данного запроса!")
 
             player = models.Player.objects.get(login=login)
             achieves = player.achieves
